@@ -1,6 +1,16 @@
 project_name: k3d-as-a-service
 
-builds: []
+builds:
+  - env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm
+      - arm64
 
 checksum:
   name_template: 'checksums.txt'
@@ -19,8 +29,9 @@ brews:
     # install: |
     #   prefix.install_symlink "file.service" => "#{service_name}.service"
 
-    # service: |
-    #   /Users/pthomison/Projects/kubernetes/flux-environments
+    service: |
+      working_dir /Users/pthomison/Projects/kubernetes/flux-environments
+      run /usr/bin/make k3d-bootstrap
 
     # post_install: |
     #   (var/"lib/example-goreleaser-service").mkpath
@@ -32,10 +43,10 @@ changelog:
       - '^docs:'
       - '^test:'
 
-# before:
-#   hooks:
-#     - go mod tidy
-#     - go fmt ./...
+before:
+  hooks:
+    - go mod tidy
+    - go fmt ./...
 
 archives:
   - replacements:
