@@ -31,7 +31,7 @@ brews:
 
     service: |
       working_dir /Users/pthomison/Projects/kubernetes/flux-environments
-      run /usr/bin/make k3d-bootstrap
+      run ["/usr/bin/make", "k3d-bootstrap"]
 
     # post_install: |
     #   (var/"lib/example-goreleaser-service").mkpath
