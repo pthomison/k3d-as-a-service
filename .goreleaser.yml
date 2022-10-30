@@ -30,8 +30,8 @@ brews:
     #   prefix.install_symlink "file.service" => "#{service_name}.service"
 
     service: |
-      working_dir /Users/pthomison/Projects/kubernetes/flux-environments
       run ["/usr/bin/make", "k3d-bootstrap"]
+      working_dir "/Users/pthomison/Projects/kubernetes/flux-environments"
 
     # post_install: |
     #   (var/"lib/example-goreleaser-service").mkpath
