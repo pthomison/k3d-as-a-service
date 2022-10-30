@@ -32,10 +32,10 @@ changelog:
       - '^docs:'
       - '^test:'
 
-before:
-  hooks:
-    - go mod tidy
-    - go fmt ./...
+# before:
+#   hooks:
+#     - go mod tidy
+#     - go fmt ./...
 
 archives:
   - replacements:
